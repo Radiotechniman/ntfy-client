@@ -1,0 +1,71 @@
+{
+  "name": "ntfy-client",
+  "version": "1.0.0",
+  "description": "Premium ntfy client for Windows 11",
+  "main": "out/main/index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/Radiotechniman/ntfy-client",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Radiotechniman/ntfy-client.git"
+  },
+  "author": "Antigravity (Radiotechniman)",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "start": "electron-vite preview",
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "postinstall": "electron-builder install-app-deps",
+    "build:unpack": "npm run build && electron-builder --dir",
+    "build:win": "npm run build && electron-builder --win",
+    "build:portable": "npm run build && electron-builder --win portable"
+  },
+  "dependencies": {
+    "@electron-toolkit/utils": "^3.0.0",
+    "electron-store": "^8.1.0",
+    "lucide-react": "^0.344.0",
+    "framer-motion": "^11.0.8",
+    "eventsource": "^2.0.2"
+  },
+  "devDependencies": {
+    "@electron-toolkit/eslint-config": "^1.0.2",
+    "@types/node": "^20.11.24",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "@vitejs/plugin-react": "^4.2.1",
+    "electron": "^29.1.1",
+    "electron-builder": "^24.13.3",
+    "electron-vite": "^2.1.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.0",
+    "prettier": "^3.2.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "vite": "^5.1.4"
+  },
+  "build": {
+    "appId": "com.antigravity.ntfy-client",
+    "productName": "NtfyDesktop",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "portable",
+      "icon": "resources/icon.png"
+    },
+    "portable": {
+      "artifactName": "${productName}-Portable-${version}.${ext}"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "resources/icon.png",
+      "category": "public.app-category.utilities"
+    },
+    "dmg": {
+      "artifactName": "${productName}-${version}.${ext}"
+    }
+  }
+}
